@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
-　def destroy
-　end 
+    
+  def index
+  end 
+  def edit
+  end 
+
 end 
