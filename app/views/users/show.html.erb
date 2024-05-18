@@ -1,5 +1,8 @@
-<h1>Books</h1>
-<div class ="user_show_head">
-    <th>Title</th>
-    <th>option</th>
-</div>
+<h1>User info</h1>
+<%= image_tag @user.get_profile_image(100,100) %>
+<h4>name</h4>
+<%= @user.name %>
+<h4>introduction</h4>
+<%= @user.introduction %> 
+
+<%= link_to "Editマーク", edit_user_path(@user.id) %>

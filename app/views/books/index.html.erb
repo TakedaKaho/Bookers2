@@ -5,9 +5,7 @@
     <th>Opinion</th>
 </div>
 
-
-<%= @books.each do |book| %>
+<% @books.each do |book| %>
  <%= book.title %>
  <%= book.body %>
-  <%= link_to "show", book_path(book.id) %>
-<% end %>
+ <% end %>

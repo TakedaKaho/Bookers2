@@ -4,7 +4,8 @@
     <th>name</th>
 </div>
 
-<%= @user.each do |user| %>
+<% @users.each do |user| %>
  <%= user.name %>
  <%= link_to "show", user_path(user.id) %>
+ <%= link_to "Edit", edit_user_path(user.id) %>
 <% end %>
