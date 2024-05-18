@@ -1,0 +1,10 @@
+<h1>Users</h1>
+<div class ="user_index_head">
+    <th>image</th>
+    <th>name</th>
+</div>
+
+<%= @user.each do |user| %>
+ <%= user.name %>
+ <%= link_to "show", user_path(user.id) %>
+<% end %>
