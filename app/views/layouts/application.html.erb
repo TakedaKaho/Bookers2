@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <script src="https://kit.fontawesome.com/b9cdc46fdb.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
+      
+    <h1>
+      <%= link_to "Bookers",root_path %>
+    </h1>
     <% if user_signed_in? %>
       <li>
         <%= link_to"Home", books_path %>
@@ -44,6 +49,8 @@
     <% end %>
   </header>  
   <%= yield %>
-  <h6>CopyRight Infratop.inc</h6>
+  <footer>
+    <p>CopyRight Infratop.inc</p>
+  </footer>
   </body>
 </html>
