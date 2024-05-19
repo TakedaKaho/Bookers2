@@ -5,4 +5,6 @@
 <h4>introduction</h4>
 <%= @user.introduction %> 
 
-<%= link_to "Editマーク", edit_user_path(@user.id) %>
+<%= link_to edit_user_path(@user.id) do %>
+<i class="fa-solid fa-user-gear"></i>
+<% end %>
