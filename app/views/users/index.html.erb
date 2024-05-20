@@ -1,15 +1,36 @@
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-3">
 <%= render 'devise/shared/sidebar', user: current_user, book: @book %>
+   </div>
 
-
+<div class="col-md-8 offset-md-1">
 <h1>Users</h1>
-<div class ="user_index_head">
+
+<table class="table">
+ <thead>
+   <tr>
     <th>image</th>
     <th>name</th>
-</div>
-
+    <th colspan="3"></th>
+   </tr>
+ </thead>
+ 
+  <tbody>
 <% @users.each do |user| %>
-<%= image_tag user.get_profile_image(100, 100) %>
- <%= user.name %>
- <%= link_to "show", user_path(user.id) %>
- <%= link_to "Edit", edit_user_path(user.id) %>
+<tr>
+<td><%= image_tag user.get_profile_image(100, 100) %></td>
+ <td><%= user.name %></td>
+ <td><%= link_to "show", user_path(user.id) %></td>
+ </tr>
 <% end %>
+
+</tbody>
+</table>
+
+
+
+</div>
+</div>
+</div>
