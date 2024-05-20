@@ -1,16 +1,14 @@
-<h1>User info</h1>
-<%= image_tag @user.get_profile_image(100,100) %>
-<h4>name</h4>
-<%= @user.name %>
-<h4>introduction</h4>
-<%= @user.introduction %> 
+<%= render 'devise/shared/sidebar', user: @user, book: @book_new %>
 
-<% if @user == current_user %>
-<%= link_to edit_user_path(@user.id) do %>
-<i class="fa-solid fa-user-gear"></i>
+<div class ="titles">
+    <h4>Title</h4>
+    <h4>Opinion</h4>
+</div>
+
+<% @book.each do |book| %>
+<%= link_to user_path(book.user.id) do %>
+<%= image_tag book.user.get_profile_image(100, 100) %>
 <% end %>
-<% else %>
-<%= link_to user_path(current_user.id) do %>
-<i class="fa-solid fa-user-gear"></i>
-<% end %>
-<% end %>
+ <%=link_to book.title,book_path(book.id) %>
+ <%= book.body %>
+ <% end %>
