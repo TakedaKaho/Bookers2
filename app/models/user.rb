@@ -6,7 +6,8 @@ class User < ApplicationRecord
          
   has_many :books, dependent: :destroy #has_manyを使うときは複数形にする
    has_one_attached :profile_image
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
+  validates :introduction, length: { maximum: 50 }
    
    
   def get_profile_image(height,width)
