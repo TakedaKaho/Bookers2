@@ -30,7 +30,13 @@
     </tr>
   </thead>
 
-  
+  <button type="button" class="btn btn-light">
+      <%= link_to '▶︎新着順', books_path(latest: "true")%>
+  </button>
+  <button type="button" class="btn btn-light">
+ <%= link_to '▶︎古い順', books_path(old: "true") %>
+  </button>
+ 
  <% @books.each do |book| %>
 
   <tbody>

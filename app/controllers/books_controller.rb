@@ -11,14 +11,22 @@ class BooksController < ApplicationController
     if @book.save
       flash[:notice]="You have created book successfully."
     redirect_to book_path(@book.id)
-  else
+    else
       render :index
     end
   end 
 
   def index
-    @books = Book.all
+    #@books = Book.all
     @book = Book.new
+    if params[:latest]
+     @books = Book.latest
+    elsif params[:old]
+     @books= Book.old
+    else 
+      @books =Book.all
+    end 
+      
   end
   
   def show
