@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @book_new = Book.new
     @book = @user.books
+    @user = User.find(params[:id])
+    @books = @user.books
   end 
 
   

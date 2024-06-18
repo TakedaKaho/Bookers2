@@ -35,7 +35,9 @@
 <% end %>
 </tbody>
 </table>
-
+<% @books.each do |book| %>
+  <p>Payment Method: <%= book.enumtable %></p>
+<% end %>
 </div>
 </div>
 </div>
