@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'net-smtp'
 gem "enum_help"
+
+gem 'dotenv-rails'
+gem 'geocoder'
