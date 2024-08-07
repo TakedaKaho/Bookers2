@@ -1,17 +1,17 @@
 json.data do
   json.items do
-    json.array!(@post_images) do |post_image|
-      json.id post_image.id
+    json.array!(@books) do |book|
+      json.id book.id
       json.user do
-        json.name post_image.user.name
-        json.image url_for(post_image.user.profile_image)
+        json.name book.user.name
+        json.image url_for(book.user.profile_image)
       end
       json.image url_for(post_image.image)
-      json.shop_name post_image.shop_name
-      json.caption post_image.caption
-      json.address post_image.address
-      json.latitude post_image.latitude
-      json.longitude post_image.longitude
+      json.shop_name book.title
+      json.caption book.body
+      json.address book.address
+      json.latitude book.latitude
+      json.longitude book.longitude
     end  
   end
 end
