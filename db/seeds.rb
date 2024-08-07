@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# 1つ目のサンプルデータ
+Book.find_or_create_by!(title: "Sample Book 1") do |book|
+  book.opinion = "素晴らしい内容の本です。"
+  book.address = "東京都千代田区丸の内1丁目" 
+  book.zipcode = "100-0005" # 郵便番号を追加
+end
+
+# 2つ目のサンプルデータ
+Book.find_or_create_by!(title: "Sample Book 2") do |book|
+  book.opinion = "非常に興味深い内容でした。"
+  book.address = "愛知県名古屋市中村区名駅1丁目1-4" # 住所を追加
+  book.zipcode = "450-0002" # 郵便番号を追加
+end
+
+# 3つ目のサンプルデータ
+Book.find_or_create_by!(title: "Sample Book 3") do |book|
+  book.opinion = "深い洞察力が感じられる本です。"
+  book.address = "大阪府大阪市淀川区西中島5-16-1" # 住所を追加
+  book.zipcode = "532-0011" # 郵便番号を追加
+end

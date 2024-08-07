@@ -16,18 +16,28 @@ class BooksController < ApplicationController
     end
   end 
 
+
   def index
-    #@books = Book.all
-    @book = Book.new
-    if params[:latest]
-     @books = Book.latest
-    elsif params[:old]
-     @books= Book.old
-    else 
-      @books =Book.all
-    end 
-      
+    respond_to do |format|
+      format.html do
+        @book = Book.new # 新しい Book オブジェクトを追加
+        if params[:latest]
+          @books = Book.latest
+        elsif params[:old]
+          @books = Book.old
+        else
+          @books = Book.all
+        end
+      end
+      format.json do
+        @books = Book.all
+        render json: { data: { items: @books.as_json(only: [:title, :opinion, :address, :zipcode, :latitude, :longitude]) } }
+      end
+    end
   end
+
+
+
   
   def show
     @book = Book.find(params[:id])
