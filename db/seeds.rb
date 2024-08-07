@@ -6,18 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user = User.first
 
 # 1つ目のサンプルデータ
 Book.find_or_create_by!(title: "Sample Book 1") do |book|
   book.body = "素晴らしい内容の本です。"
-  book.address = "東京都千代田区丸の内1丁目" 
+  book.address = "東京都千代田区丸の内1丁目"
   book.zipcode = "100-0005" # 郵便番号を追加
+  book.user = user # ユーザーを関連付ける
 end
-
 
 # 3つ目のサンプルデータ
 Book.find_or_create_by!(title: "Sample Book 3") do |book|
   book.body = "深い洞察力が感じられる本です。"
   book.address = "大阪府大阪市淀川区西中島5-16-1" # 住所を追加
   book.zipcode = "532-0011" # 郵便番号を追加
+  book.user = user # ユーザーを関連付ける
 end
