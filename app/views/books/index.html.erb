@@ -10,7 +10,8 @@
   <div class="row">
     <!-- Sidebar -->
     <div class="col-md-3">
-      <%= render 'devise/shared/sidebar', user: current_user %>
+      <%= render 'devise/shared/sidebar', user: current_user, book: @book %>
+
     </div>
 
     <!-- Main content -->

@@ -13,7 +13,7 @@ async function initMap() {
 
   // 地図の中心と倍率は公式から変更しています。
   map = new Map(document.getElementById("map"), {
-    center: { lat: 35.681236, lng: 139.767125 }, 
+    center: { lat: 34.9851603, lng: 135.7584294 }, 
     zoom: 15,
     mapId: "DEMO_MAP_ID", // 追記
     mapTypeControl: false
@@ -40,7 +40,7 @@ async function initMap() {
       });
     });
   } catch (error) {
-    console.error('Error fetching or processing post images:', error);
+    console.error('Error fetching or processing books:', error);
   }
 }
 
