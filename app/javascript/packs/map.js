@@ -31,12 +31,42 @@ async function initMap() {
       const latitude = item.latitude;
       const longitude = item.longitude;
       const title = item.title;
+      const userName = item.user.name;
+      const address = item.address;
+      const caption = item.body;
 
       const marker = new google.maps.marker.AdvancedMarkerElement ({
         position: { lat: latitude, lng: longitude },
         map,
         title: title,
         // 他の任意のオプションもここに追加可能
+      });
+      
+      // 追記
+      const contentString = `
+        <div class="information container p-0">
+          <div class="mb-3 d-flex align-items-center">
+            <img class="rounded-circle mr-2" src="${userImage}" width="40" height="40">
+            <p class="lead m-0 font-weight-bold">${userName}</p>
+          </div>
+          <div>
+            <h1 class="h4 font-weight-bold">${title}</h1>
+            <p class="text-muted">${address}</p>
+            <p class="lead">${caption}</p>
+          </div>
+        </div>
+      `;
+      
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        ariaLabel: shopName,
+      });
+      
+      marker.addListener("click", () => {
+          infowindow.open({
+          anchor: marker,
+          map,
+        })
       });
     });
   } catch (error) {
