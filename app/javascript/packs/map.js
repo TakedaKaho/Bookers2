@@ -9,17 +9,15 @@ let map;
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker") // 追記
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  // 地図の中心と倍率は公式から変更しています。
   map = new Map(document.getElementById("map"), {
     center: { lat: 34.9851603, lng: 135.7584294 }, 
     zoom: 15,
-    mapId: "DEMO_MAP_ID", // 追記
+    mapId: "DEMO_MAP_ID",
     mapTypeControl: false
   });
-  
-   // 追記
+
   try {
     const response = await fetch("/books.json");
     if (!response.ok) throw new Error('Network response was not ok');
@@ -27,26 +25,25 @@ async function initMap() {
     const { data: { items } } = await response.json();
     if (!Array.isArray(items)) throw new Error("Items is not an array");
 
-    items.forEach( item => {
+    items.forEach(item => {
       const latitude = item.latitude;
       const longitude = item.longitude;
       const title = item.title;
-      const userName = item.user.name;
+      const userName = item.user?.name || 'Unknown User';
+      const userImage = item.user?.profile_image_url || 'default_image_url.jpg'; // 修正
       const address = item.address;
       const caption = item.body;
 
-      const marker = new google.maps.marker.AdvancedMarkerElement ({
+      const marker = new google.maps.marker.AdvancedMarkerElement({
         position: { lat: latitude, lng: longitude },
         map,
         title: title,
-        // 他の任意のオプションもここに追加可能
       });
-      
-      // 追記
+
       const contentString = `
         <div class="information container p-0">
           <div class="mb-3 d-flex align-items-center">
-            <img class="rounded-circle mr-2" src="${userImage}" width="40" height="40">
+            <img class="rounded-circle mr-2" src="${userImage}" width="40" height="40" alt="User Image">
             <p class="lead m-0 font-weight-bold">${userName}</p>
           </div>
           <div>
@@ -56,17 +53,17 @@ async function initMap() {
           </div>
         </div>
       `;
-      
+
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
-        ariaLabel: shopName,
+        ariaLabel: title, // 修正
       });
-      
+
       marker.addListener("click", () => {
-          infowindow.open({
+        infowindow.open({
           anchor: marker,
           map,
-        })
+        });
       });
     });
   } catch (error) {
@@ -74,4 +71,4 @@ async function initMap() {
   }
 }
 
-initMap()
+initMap();
