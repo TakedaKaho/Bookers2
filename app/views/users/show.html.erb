@@ -11,12 +11,13 @@
     </div>
     
     <div class="col-md-8 offset-md-1">
-        <h2>Books</h2>
+        <h2>My Books</h2>
         
   <table class ="table table-hover table-inverse">
    <thead>
     <tr>
      <th colspan="2"></th>
+     <th>date</th>
      <th>Title</th>
      <th>Opinion</th>
     </tr>
@@ -29,6 +30,7 @@
    <td><%= link_to user_path(book.user.id) do %></td>
     <td><%= image_tag book.user.get_profile_image(100, 100) %></td>
 <% end %>
+   <td><%= book.created_at.strftime("%Y-%m-%d") %></td>
    <td><%=link_to book.title,book_path(book.id) %></td>
    <td><%= book.body %></td>
  <% end %>
