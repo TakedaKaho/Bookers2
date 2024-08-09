@@ -31,7 +31,6 @@ class BooksController < ApplicationController
       end
       format.json do
         @books = Book.all
-        #render json: { data: { items: @books.as_json(only: [:title, :opinion, :address, :zipcode, :latitude, :longitude]) } }
       end
     end
   end

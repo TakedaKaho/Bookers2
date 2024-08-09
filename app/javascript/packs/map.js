@@ -32,7 +32,7 @@ async function initMap() {
       const userName = item.user?.name || 'Unknown User';
       const userImage = item.user?.profile_image_url || 'default_image_url.jpg'; // 修正
       const address = item.address;
-      const caption = item.body;
+      const body = item.body;
 
       const marker = new google.maps.marker.AdvancedMarkerElement({
         position: { lat: latitude, lng: longitude },
@@ -49,7 +49,7 @@ async function initMap() {
           <div>
             <h1 class="h4 font-weight-bold">${title}</h1>
             <p class="text-muted">${address}</p>
-            <p class="lead">${caption}</p>
+            <p class="lead">${body}</p>
           </div>
         </div>
       `;
