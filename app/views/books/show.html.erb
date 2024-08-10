@@ -4,42 +4,39 @@
 
 <div class="container px-5 px-sm-0">
   <div class="row">
-   <div class="col-md-3">
-    <%= render 'devise/shared/sidebar', user: @user, book: @book_new %>
-   </div>
+    <div class="col-md-3">
+      <%= render 'devise/shared/sidebar', user: @user, book: @book_new %>
+    </div>
 
-  <div class="col-md-8 offset-md-1">
-  <div class="card mb-4">
-    <div class="card-header">
-      <h2 class="mb-0">Book Detail</h2>
-    </div>
-    <div class="card-body">
-      <div class="d-flex align-items-center mb-3">
-        <%= link_to user_path(@book.user_id) do %>
-          <%= image_tag @book.user.get_profile_image(100, 100), class: 'mr-3' %>
-        <% end %>
-        <div>
-          <h6 class="card-title mb-1"><%= @book.user.name %></h6>
+    <div class="col-md-8 offset-md-1">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="mb-0">Book Detail</h2>
         </div>
-      </div>
-      <div class="mb-3">
-        <h6 class="font-weight-bold"><i class="fa-solid fa-book"></i> Title:</h6>
-        <h5 class="card-title mb-2"><%= @book.title %></h5>
-        <h6 class="font-weight-bold"><i class="fa-solid fa-location-dot"></i> Address:</h6>
-        <p class="card-text mb-2"><%= @book.address %></p>
-      </div>
-      <div>
-        <h6 class="font-weight-bold">Body:</h6>
-        <p class="card-text"><i class="fa-solid fa-book-open"></i> <%= @book.body %></p>
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <%= link_to user_path(@book.user_id) do %>
+              <%= image_tag @book.user.get_profile_image(100, 100), class: 'mr-3' %>
+            <% end %>
+            <div>
+              <h6 class="card-title mb-1"><%= @book.user.name %></h6>
+            </div>
+          </div>
+          <div class="mb-3">
+            <p class="card-title mb-2"><i class="fa-solid fa-book"></i> <strong>Title:</strong> <%= @book.title %></p>
+            <p class="card-text mb-2"><i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> <%= @book.address %></p>
+          </div>
+          <div>
+            <p class="card-text"><i class="fa-solid fa-book-open"></i> <strong>Body:</strong> <%= @book.body %></p>
+          </div>
+        </div>
+        <% if @book.user == current_user %>
+          <div class="card-footer text-right">
+            <%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-outline-success mr-2' %>
+            <%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-sm btn-outline-danger' %>
+          </div>
+        <% end %>
       </div>
     </div>
-    <% if @book.user == current_user %>
-      <div class="card-footer text-right">
-        <%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-outline-success mr-2' %>
-        <%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-sm btn-outline-danger' %>
-      </div>
-    <% end %>
   </div>
-  </div>
- </div>
 </div>
